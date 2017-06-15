@@ -13,7 +13,7 @@ module.exports = {
         test:/\.jsx?/i,
         loader:'babel-loader',
         options: {
-          presets:['env'],
+          presets:['env','es2015','stage-0'],
           plugins:[
             ['transform-react-jsx',{ pragma:'h' }]
           ]

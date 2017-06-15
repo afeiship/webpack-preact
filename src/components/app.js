@@ -1,5 +1,6 @@
 import {Component, h} from 'preact';
 
+import FormState from './form-state';
 import User from './user';
 
 /**
@@ -26,10 +27,11 @@ export default class extends Component{
         })
       }).catch(err=> console.log(err));
   }
-  
-  render(){
+
+  render(props){
     return <div className="app">
       <h1>Hello user.</h1>
+      <FormState />
       {
         this.state.loading ?  <p>Please wating..</p> : <User pic={this.state.user.avatar_url} desc={this.state.user.name} />
       }
