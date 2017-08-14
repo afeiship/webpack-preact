@@ -1,5 +1,5 @@
 # webpack-preact
-> Webpack for mini react.
+> Webpack for mini react(preact).
 
 
 ## resources:

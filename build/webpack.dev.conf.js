@@ -34,11 +34,16 @@ module.exports = {
   },
   plugins:[
     new HtmlWebpackPlugin({
-      template: path.join(__dirname,'..','src','index.html'),
+      template: path.resolve(__dirname,'..','src/index.html'),
       title: 'Hot Module Replacement'
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
+  resolve:{
+    alias:{
+      images:path.resolve(__dirname,'..', 'src/assets/images'),
+    }
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')

@@ -7,6 +7,7 @@ export default class extends Component {
     return (
       <div className="test-form">
         <input type="text" name="" id="" onInput={linkState(this,'text')}/>
+        <p><img src={require('images/code.png')} width="400" /></p>
         <pre>
           <code>
             { JSON.stringify(this.state,null,4)}
