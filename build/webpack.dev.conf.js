@@ -8,6 +8,9 @@ module.exports = {
     path: path.join(__dirname, '..', 'dist'),
     filename: 'bundle.js'
   },
+  // externals: {
+  //   preact: 'preact'
+  // },
   module: {
     rules: [
       {
@@ -25,23 +28,45 @@ module.exports = {
             ]
           ]
         }
-      },
-      {
+      }, {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          }, {
+            loader: "css-loader" // translates CSS into CommonJS
+          }, {
+            loader: "sass-loader" // compiles Sass to CSS
+          }
+        ]
+      }, {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader']
       }
     ]
   },
-  plugins:[
+  plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname,'..','src/index.html'),
+      template: path.resolve(__dirname, '..', 'src/index.html'),
       title: 'Hot Module Replacement'
+    }),
+    // build optimization plugins
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor-[hash].min.js',
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: false,
+      }
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
-  resolve:{
-    alias:{
-      images:path.resolve(__dirname,'..', 'src/assets/images'),
+  resolve: {
+    alias: {
+      images: path.resolve(__dirname, '..', 'src/assets/images'),
+      styles: path.resolve(__dirname, '..', 'src/assets/styles')
     }
   },
   output: {

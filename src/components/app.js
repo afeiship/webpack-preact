@@ -2,7 +2,7 @@ import {Component, h} from 'preact';
 
 import FormState from './form-state';
 import User from './user';
-
+import 'styles/app.scss';
 /**
  * Stateful component.
  */
