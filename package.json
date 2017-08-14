@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Webpack for mini react.",
   "scripts": {
-    "build": "webpack --config ./build/webpack.prod.conf.js",
     "dev": "webpack-dev-server --inline --colors --config ./build/webpack.dev.conf.js"
   },
   "keywords": [],
@@ -18,13 +17,14 @@
     "babel-preset-stage-0": "^6.22.0",
     "preact": "^8.1.0",
     "preact-compat": "^3.16.0",
-    "preact-router": "^2.5.2",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "preact-router": "^2.5.2"
   },
   "dependencies": {
+    "html-webpack-plugin": "^2.30.1",
     "linkstate": "^1.0.1",
     "preact": "^8.1.0",
-    "preact-router": "^2.5.2"
+    "preact-router": "^2.5.2",
+    "webpack": "^3.5.4",
+    "webpack-dev-server": "^2.7.1"
   }
 }

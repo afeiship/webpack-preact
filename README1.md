@@ -4,6 +4,4 @@
 
 ## resources:
 + https://github.com/developit/preact
-
-## todos:
-- [ ] todo list..
++ https://webpack.js.org/guides/asset-management/
