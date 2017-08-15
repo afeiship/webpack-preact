@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from "extract-text-webpack-plugin";
 
 export default {
   entry: './src/index.js',
@@ -27,27 +28,27 @@ export default {
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: "style-loader" // creates style nodes from JS strings
-          },
-          {
-            loader: "css-loader" // translates CSS into CommonJS
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [
-                autoprefixer({
-                  browsers: ['last 2 version', 'Explorer >= 10', 'Android >= 4']
-                })
-              ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use:[
+            {
+              loader: "css-loader" // translates CSS into CommonJS
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  autoprefixer({
+                    browsers: ['last 2 version', 'Explorer >= 10', 'Android >= 4']
+                  })
+                ]
+              }
+            },
+            {
+              loader: "sass-loader" // compiles Sass to CSS
             }
-          },
-          {
-            loader: "sass-loader" // compiles Sass to CSS
-          }
-        ]
+          ]
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -71,6 +72,7 @@ export default {
         drop_console: false,
       }
     }),
+    new ExtractTextPlugin('style.css'),
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
