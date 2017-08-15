@@ -1,7 +1,6 @@
 import path from 'path';
-import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import {rules, plugins, extensions, alias, dev} from './webpack.config.babel';
+
 
 export default {
   entry: './src/index.js',
@@ -10,80 +9,13 @@ export default {
     path: path.resolve(__dirname, '../dist')
   },
   module: {
-    rules: [
-      {
-        test: /\.jsx?/i,
-        loader: 'babel-loader',
-        exclude: /node_modules\/*/,
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: "style-loader" // creates style nodes from JS strings
-          },
-          {
-            loader: "css-loader" // translates CSS into CommonJS
-          },
-          {
-            loader: "sass-loader" // compiles Sass to CSS
-          }
-        ]
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader']
-      }
-    ]
+    rules: [rules.jsx, rules.scss, rules.image]
   },
-  plugins: [
-    new webpack.LoaderOptionsPlugin({
-      minimize: false,
-      debug: true,
-      options: {
-        postcss: [
-          autoprefixer({
-            browsers: ['last 2 version', 'Explorer >= 10', 'Android >= 4']
-          })
-        ]
-      }
-    }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.html'),
-      title: 'Hot Module Replacement'
-    }),
-    // build optimization plugins
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor-[hash].min.js',
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_console: false,
-      }
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [plugins.html, plugins.common, plugins.uglify, plugins.hot],
   resolve: {
-    extensions: ['.js', '.json', '.scss'],
-    alias: {
-      assets: path.resolve(__dirname, '../src/assets'),
-      images: path.resolve(__dirname, '../src/assets/images'),
-      styles: path.resolve(__dirname, '../src/assets/styles')
-    }
+    extensions, alias
   },
   //devtools:
-  devtool: 'source-map',
-  devServer: {
-    contentBase: path.resolve(__dirname, '../dist'),
-    hot: true,
-    stats: 'errors-only',
-    compress: true,
-    historyApiFallback: true,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Power-by": "Fei-WEBPACK"
-    }
-  }
+  devtool: dev.devtool,
+  devServer: dev.devServer
 };
