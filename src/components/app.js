@@ -33,6 +33,9 @@ export default class extends Component {
     return <div className="app">
       <h1>Hello user.</h1>
       <FormState />
+      <p className="comp1">Col1-styles from comp1</p>
+      <p className="comp2">Col1-styles from comp2</p>
+      <p className="comp3">Col1-styles from comp3</p>
       {
         this.state.loading ? <p>Please wating..</p> :
           <User pic={this.state.user.avatar_url} desc={this.state.user.name}/>
