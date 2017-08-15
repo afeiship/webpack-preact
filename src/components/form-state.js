@@ -20,7 +20,7 @@ export default class extends Component {
       <div className="test-form">
         <input type="text" onInput={linkState(this, 'text')}/>
         <p><img src={require('images/code.png')} width="400"/></p>
-        <button value="test" onClick={this._click}>Test Click (Autobind)</button>
+        <button value="test" onClick={this._click}>Test Click (Mixin)</button>
         <pre>
           <code>
             { JSON.stringify(this.state, null, 4)}

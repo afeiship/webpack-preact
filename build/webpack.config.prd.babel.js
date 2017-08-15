@@ -92,6 +92,7 @@ export default {
   resolve: {
     extensions: ['.js', '.json', '.scss'],
     alias: {
+      components: path.resolve(__dirname, '../src/components'),
       assets: path.resolve(__dirname, '../src/assets'),
       images: path.resolve(__dirname, '../src/assets/images'),
       styles: path.resolve(__dirname, '../src/assets/styles')

@@ -7,7 +7,7 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 export default {
   entry: './src/index.js',
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name]-[chunkhash].bundle.js',
     path: path.resolve(__dirname, '../dist')
   },
   externals: {
