@@ -1,23 +1,31 @@
 import path from 'path';
 import webpack from 'webpack';
+import autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
   entry: './src/index.js',
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, '../dist')
+  },
   module: {
     rules: [
       {
         test: /\.jsx?/i,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: /node_modules\/*/,
       },
       {
         test: /\.scss$/,
         use: [
           {
             loader: "style-loader" // creates style nodes from JS strings
-          }, {
+          },
+          {
             loader: "css-loader" // translates CSS into CommonJS
-          }, {
+          },
+          {
             loader: "sass-loader" // compiles Sass to CSS
           }
         ]
@@ -29,6 +37,17 @@ export default {
     ]
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      minimize: false,
+      debug: true,
+      options: {
+        postcss: [
+          autoprefixer({
+            browsers: ['last 2 version', 'Explorer >= 10', 'Android >= 4']
+          })
+        ]
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
       title: 'Hot Module Replacement'
@@ -53,10 +72,6 @@ export default {
       images: path.resolve(__dirname, '../src/assets/images'),
       styles: path.resolve(__dirname, '../src/assets/styles')
     }
-  },
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, '../dist')
   },
   //devtools:
   devtool: 'source-map',
