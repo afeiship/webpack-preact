@@ -1,8 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+export default {
   entry: './src/index.js',
   module: {
     rules: [
@@ -49,6 +49,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.scss'],
     alias: {
+      assets: path.resolve(__dirname, '../src/assets'),
       images: path.resolve(__dirname, '../src/assets/images'),
       styles: path.resolve(__dirname, '../src/assets/styles')
     }
