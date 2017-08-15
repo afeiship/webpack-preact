@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Webpack for mini react.",
   "scripts": {
+    "clean": "rimraf dist",
+    "predev": "npm run clean && npm run dll",
     "dev": "webpack-dev-server --inline --colors --config ./build/webpack.config.dev.babel.js",
     "dll": "webpack --config ./build/webpack.config.vendor.babel.js"
   },
@@ -37,6 +39,7 @@
     "preact-router": "^2.5.2",
     "pug-html-loader": "^1.1.5",
     "pug-loader": "^2.3.0",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.4",

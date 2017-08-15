@@ -13,10 +13,6 @@ export default {
       path: path.resolve(__dirname, '../dist/vendors/manifest.json'),
       name: '[name]_library',
       context: __dirname,
-    }),
-    new AssetsWebpackPlugin({
-      filename: 'bundle-config.json',
-      path: path.resolve(__dirname, '../dist/vendors')
     })
   ],
   entry: {
