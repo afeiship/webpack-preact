@@ -14,7 +14,10 @@ export default {
     rules: [
       {
         test: /\.pug$/,
-        loader: 'pug-loader'
+        loader: 'pug-loader',
+        options:{
+          pretty: true
+        }
       },
       {
         test: /\.jsx?/i,
