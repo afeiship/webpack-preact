@@ -6,6 +6,7 @@
     "clean": "rimraf dist",
     "predev": "npm run clean && npm run dll",
     "dev": "webpack-dev-server --inline --colors --config ./build/webpack.config.dev.babel.js",
+    "build": "webpack -p --config ./build/webpack.config.prd.babel.js",
     "dll": "webpack --config ./build/webpack.config.vendor.babel.js"
   },
   "keywords": [],
@@ -47,6 +48,7 @@
   },
   "dependencies": {
     "linkstate": "^1.0.1",
+    "next-js-core2": "github:afeiship/next-js-core2",
     "preact": "^8.2.1",
     "preact-router": "^2.5.2"
   }

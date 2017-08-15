@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import AssetsWebpackPlugin from 'assets-webpack-plugin';
 
 export default {
   output: {
@@ -17,7 +16,7 @@ export default {
   ],
   entry: {
     vendors: [
-      'preact'
+      'next-js-core2'
     ]
   },
 }
