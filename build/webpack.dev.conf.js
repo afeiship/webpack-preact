@@ -4,13 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  output: {
-    path: path.join(__dirname, '..', 'dist'),
-    filename: 'bundle.js'
-  },
-  // externals: {
-  //   preact: 'preact'
-  // },
   module: {
     rules: [
       {
@@ -23,12 +16,13 @@ module.exports = {
           plugins: [
             [
               'transform-react-jsx', {
-                pragma: 'h'
-              }
+              pragma: 'h'
+            }
             ]
           ]
         }
-      }, {
+      },
+      {
         test: /\.scss$/,
         use: [
           {
@@ -39,7 +33,8 @@ module.exports = {
             loader: "sass-loader" // compiles Sass to CSS
           }
         ]
-      }, {
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: ['file-loader']
       }
@@ -47,7 +42,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '..', 'src/index.html'),
+      template: path.resolve(__dirname, '../src/index.html'),
       title: 'Hot Module Replacement'
     }),
     // build optimization plugins
@@ -64,19 +59,20 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   resolve: {
+    extensions: ['.js', '.json', '.scss'],
     alias: {
-      images: path.resolve(__dirname, '..', 'src/assets/images'),
-      styles: path.resolve(__dirname, '..', 'src/assets/styles')
+      images: path.resolve(__dirname, '../src/assets/images'),
+      styles: path.resolve(__dirname, '../src/assets/styles')
     }
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '../dist')
   },
   //devtools:
   devtool: 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, '..', 'dist'),
+    contentBase: path.resolve(__dirname, '../dist'),
     hot: true,
     compress: true,
     historyApiFallback: true,
