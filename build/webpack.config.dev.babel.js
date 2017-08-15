@@ -8,19 +8,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?/i,
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            'env', 'es2015', 'stage-0'
-          ],
-          plugins: [
-            [
-              'transform-react-jsx', {
-              pragma: 'h'
-            }
-            ]
-          ]
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.scss$/,
