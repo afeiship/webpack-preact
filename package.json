@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Webpack for mini react.",
   "scripts": {
-    "dev": "webpack-dev-server --inline --colors --config ./build/webpack.config.dev.babel.js"
+    "dev": "webpack-dev-server --inline --colors --config ./build/webpack.config.dev.babel.js",
+    "dll": "webpack --config ./build/webpack.config.vendor.babel.js"
   },
   "keywords": [],
   "author": "",

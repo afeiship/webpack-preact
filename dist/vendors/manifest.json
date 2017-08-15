@@ -1,0 +1,1 @@
+{"name":"vendors_library","content":{"../node_modules/preact/dist/preact.esm.js":{"id":1,"meta":{"harmonyModule":true},"exports":["h","createElement","cloneElement","Component","render","rerender","options","default"]}}}

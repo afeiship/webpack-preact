@@ -15,7 +15,7 @@ export default {
       {
         test: /\.pug$/,
         loader: 'pug-loader',
-        options:{
+        options: {
           pretty: true
         }
       },
@@ -33,7 +33,7 @@ export default {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use:[
+          use: [
             {
               loader: "css-loader" // translates CSS into CommonJS
             },
@@ -60,6 +60,9 @@ export default {
     ]
   },
   plugins: [
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, '../dist/vendors/manifest.json')
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.pug'),
       title: 'Hot Module Replacement'
