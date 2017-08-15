@@ -63,6 +63,10 @@ export default {
     ]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      nx: 'next-js-core2',
+      mixin: 'mixin-decorator',
+    }),
     new webpack.DllReferencePlugin({
       manifest: path.resolve(__dirname, '../dist/vendors/manifest.json')
     }),
@@ -87,6 +91,7 @@ export default {
   resolve: {
     extensions: ['.js', '.json', '.scss'],
     alias: {
+      components: path.resolve(__dirname, '../src/components'),
       assets: path.resolve(__dirname, '../src/assets'),
       images: path.resolve(__dirname, '../src/assets/images'),
       styles: path.resolve(__dirname, '../src/assets/styles')

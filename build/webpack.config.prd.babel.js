@@ -63,6 +63,11 @@ export default {
     ]
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      nx: 'next-js-core2',
+      autobind: 'autobind-decorator',
+      mixin: 'mixin-decorator',
+    }),
     new webpack.DllReferencePlugin({
       manifest: path.resolve(__dirname, '../dist/vendors/manifest.json')
     }),
