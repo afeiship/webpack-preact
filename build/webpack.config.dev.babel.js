@@ -12,6 +12,10 @@ export default {
   module: {
     rules: [
       {
+        test: /\.pug$/,
+        loader: 'pug-loader'
+      },
+      {
         test: /\.jsx?/i,
         loader: 'babel-loader',
         exclude: /node_modules\/*/,
@@ -24,6 +28,9 @@ export default {
       {
         test: /\.scss$/,
         use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
           {
             loader: "css-loader" // translates CSS into CommonJS
           },
@@ -50,7 +57,7 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.html'),
+      template: path.resolve(__dirname, '../src/index.pug'),
       title: 'Hot Module Replacement'
     }),
     // build optimization plugins
